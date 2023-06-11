@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 
-function StartGameScreen() {
+function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnterNumber] = useState('');
   function numberInputHandler(enteredText) {
     setEnterNumber(enteredText);
@@ -21,6 +21,7 @@ function StartGameScreen() {
   }
   function confirmInputHandler() {
     const chosenNumber = parseInt(enteredNumber); // convert sting into number
+    // validate input
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       // show alert ...
       Alert.alert(
@@ -30,7 +31,7 @@ function StartGameScreen() {
       );
       return;
     }
-    console.log('Valid number');
+    onPickNumber(chosenNumber);
   }
   return (
     <View style={styles.inputContainer}>
