@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { View, Text, StyleSheet, Alert } from 'react-native';
 import NumberContainer from '../components/game/NumberContainer';
@@ -16,18 +16,24 @@ function generateRandomBetween(min, max, exclude) {
   }
 }
 
-function GameScreen({ userNumber }) {
-  const initialGuess = generateRandomBetween(
-    minBoundary,
-    maxBoundary,
-    userNumber
+function GameScreen({ userNumber, onGameOver }) {
+  const initialGuess = generateRandomBetween(1, 100, userNumber);
+  // this is the solution in Q&A, to solve problem of the function get call after meet the requiremenet of gameOver
+  // but if do so, the useState need to make as a function, otherwise will raise bug
+  const [currentGuess, setCurrentGuess] = useState(() =>
+    generateRandomBetween(minBoundary, maxBoundary, userNumber)
   );
-  const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  // const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  useEffect(() => {
+    if (currentGuess === userNumber) {
+      onGameOver();
+    }
+  }, [currentGuess, userNumber, onGameOver]);
 
   function nextGuessHandler(direction) {
     if (
       (direction === 'lower' && currentGuess < userNumber) ||
-      (direction == 'greater' && currentGuess > userNumber)
+      (direction === 'greater' && currentGuess > userNumber)
     ) {
       Alert.alert("Don't lie!", 'You know that this is wrong ... ', [
         { text: 'Cancel', style: 'cancel' },

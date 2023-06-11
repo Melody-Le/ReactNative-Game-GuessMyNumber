@@ -10,15 +10,27 @@ import {
 import Colors from './constants/colors';
 import GameScreen from './screens/GameScreen';
 import StartGameScreen from './screens/StartGameScreen';
+import GameOverScreen from './screens/GameOverScreen';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(null);
+  const [gameIsOver, setGameIsOver] = useState(true);
   let screen = <StartGameScreen onPickNumber={pickNumberHandler} />;
   if (userNumber) {
-    screen = <GameScreen userNumber={userNumber} />;
+    screen = (
+      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+    );
+  }
+  if (gameIsOver && userNumber) {
+    screen = <GameOverScreen />;
+  }
+
+  function gameOverHandler() {
+    setGameIsOver(true);
   }
   function pickNumberHandler(number) {
     setUserNumber(number);
+    setGameIsOver(false);
   }
   return (
     <LinearGradient
