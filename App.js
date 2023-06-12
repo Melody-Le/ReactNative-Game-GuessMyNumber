@@ -14,6 +14,7 @@ import Colors from './constants/colors.ios';
 import GameScreen from './screens/GameScreen';
 import StartGameScreen from './screens/StartGameScreen';
 import GameOverScreen from './screens/GameOverScreen';
+import { StatusBar } from 'expo-status-bar';
 
 SplashScreen.preventAutoHideAsync()
   .then((result) =>
@@ -78,19 +79,22 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      colors={[Colors.primary700, Colors.accent500]}
-      style={styles.rootScreen}
-    >
-      <ImageBackground
-        source={require('./assets/images/background.png')}
-        resizeMode='cover'
+    <>
+      <StatusBar style='light' />
+      <LinearGradient
+        colors={[Colors.primary700, Colors.accent500]}
         style={styles.rootScreen}
-        imageStyle={styles.backgroundImage}
       >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          source={require('./assets/images/background.png')}
+          resizeMode='cover'
+          style={styles.rootScreen}
+          imageStyle={styles.backgroundImage}
+        >
+          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 
