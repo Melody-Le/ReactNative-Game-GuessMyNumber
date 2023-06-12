@@ -1,5 +1,5 @@
 import { StyleSheet, View, Dimensions } from 'react-native';
-import Colors from '../../constants/colors';
+import Colors from '../../constants/colors.ios';
 
 function Card({ children }) {
   return <View style={styles.inputContainer}>{children}</View>;

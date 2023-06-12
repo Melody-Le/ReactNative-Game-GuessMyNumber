@@ -12,7 +12,7 @@ import {
 import Card from '../components/ui/Card';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import Title from '../components/ui/Title';
-import Colors from '../constants/colors';
+import Colors from '../constants/colors.ios';
 import InstructionText from '../components/ui/InstructionText';
 
 function StartGameScreen({ onPickNumber }) {

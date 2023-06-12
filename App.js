@@ -10,7 +10,7 @@ import {
 import AppLoading from 'expo-app-loading';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
-import Colors from './constants/colors';
+import Colors from './constants/colors.ios';
 import GameScreen from './screens/GameScreen';
 import StartGameScreen from './screens/StartGameScreen';
 import GameOverScreen from './screens/GameOverScreen';

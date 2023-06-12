@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import Colors from '../../constants/colors';
+import Colors from '../../constants/colors.ios';
 
 function GuessLogItem({ roundNumber, guess }) {
   return (

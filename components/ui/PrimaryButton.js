@@ -1,4 +1,4 @@
-import Colors from '../../constants/colors';
+import Colors from '../../constants/colors.ios';
 import {
   View,
   Text,
